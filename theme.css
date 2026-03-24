@@ -1,0 +1,8 @@
+/* Extra theme polish (optional layer) */
+body{
+  text-rendering: optimizeLegibility;
+}
+
+.prose h2{ margin-top: 18px; }
+.prose p, .prose li{ color: var(--muted); line-height: 1.6; }
+.prose strong{ color: var(--text); }

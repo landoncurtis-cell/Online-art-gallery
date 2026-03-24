@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content=" Gallery digital art experience">
+<title> Gallery</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0d12">
+
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/layout.css">
+<link rel="stylesheet" href="assets/styles/components.css">
+<link rel="stylesheet" href="assets/styles/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label=" Gallery ">
+        <span class="brand__mark" aria-hidden="true">◼︎</span>
+        <span class="brand__text">
+          <span class="brand__title"> Gallery</span>
+          <span class="brand__sub">Digital Art • Curated Collection</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html" aria-current="page">Home</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="submit.html">Submit</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="accessibility.html">Accessibility</a>
+        <a class="nav__link" href="references.html">References</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button id="themeBtn" class="btn btn--ghost" type="button" aria-pressed="false">
+          <span class="icon" aria-hidden="true">☾</span>
+          <span class="hide-sm">Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero">
+      <div class="container hero__grid">
+        <div class="hero__copy">
+          <p class="kicker">Competition-Level Project</p>
+          <h1 class="hero__title">A gallery built like a real product.</h1>
+          <p class="hero__lead">
+            Filter, sort, favorite, and view works in an accessible modal viewer — plus offline support and a submission system.
+          </p>
+
+          <div class="hero__cta">
+            <a class="btn" href="gallery.html">
+              <span class="icon" aria-hidden="true">🖼</span> Explore Gallery
+            </a>
+            <a class="btn btn--ghost" href="submit.html">
+              <span class="icon" aria-hidden="true">＋</span> Submit Artwork
+            </a>
+          </div>
+
+          <div class="hero__stats" role="status" aria-live="polite">
+            <div class="stat">
+              <span class="stat__num" id="statPieces">—</span>
+              <span class="stat__label">Pieces</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" id="statTags">—</span>
+              <span class="stat__label">Tags</span>
+            </div>
+            <div class="stat">
+              <span class="stat__num" id="statFavs">0</span>
+              <span class="stat__label">Favorites</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero__panel" aria-label="Featured artwork preview">
+          <div class="panel">
+            <div class="panel__head">
+              <span class="chip">Featured</span>
+              <span class="chip chip--soft" id="featuredMeta">Loading…</span>
+            </div>
+            <figure class="panel__figure">
+              <img id="featuredImg" alt="Featured artwork preview" loading="lazy">
+              <figcaption class="panel__caption">
+                <strong id="featuredTitle">—</strong>
+                <span class="muted" id="featuredDesc">—</span>
+              </figcaption>
+            </figure>
+            <div class="panel__foot">
+              <a class="btn btn--ghost" id="featuredLink" href="gallery.html">
+                Open in Gallery →
+              </a>
+            </div>
+          </div>
+          <p class="fineprint">
+            Tip: This site supports keyboard navigation, reduced motion, and offline caching (PWA).
+          </p>
+        </div>
+      </div>
+
+      <div class="aurora" aria-hidden="true"></div>
+    </section>
+
+    <section class="container section">
+      <h2 class="section__title">What makes this “Webmaster-level”?</h2>
+      <div class="feature-grid">
+        <article class="feature">
+          <h3>Real architecture</h3>
+          <p>Multi-page site, modular JS, data-driven rendering, and reusable UI components.</p>
+        </article>
+        <article class="feature">
+          <h3>Accessibility first</h3>
+          <p>Skip link, focus handling, ARIA, keyboard navigation, and reduced-motion support.</p>
+        </article>
+        <article class="feature">
+          <h3>Performance & polish</h3>
+          <p>Lazy loading, animations with fallbacks, and service worker caching for offline use.</p>
+        </article>
+        <article class="feature">
+          <h3>User features</h3>
+          <p>Favorites saved locally, theme toggle saved locally, and a validated submission form.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span>  Gallery </p>
+      <p class="muted">Made with HTML • CSS • JavaScript</p>
+    </div>
+  </footer>
+
+<script type="module" src="assets/js/app.js"></script>
+</body>
+</html>

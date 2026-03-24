@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arcadia Gallery digital art experience">
+<title>Arcadia Gallery</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0d12">
+
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/layout.css">
+<link rel="stylesheet" href="assets/styles/components.css">
+<link rel="stylesheet" href="assets/styles/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Arcadia Gallery home">
+        <span class="brand__mark" aria-hidden="true">◼︎</span>
+        <span class="brand__text">
+          <span class="brand__title">Arcadia Gallery</span>
+          <span class="brand__sub">Digital Art • Curated Collection</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="gallery.html" aria-current="page">Gallery</a>
+        <a class="nav__link" href="submit.html">Submit</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="accessibility.html">Accessibility</a>
+        <a class="nav__link" href="references.html">References</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button id="themeBtn" class="btn btn--ghost" type="button" aria-pressed="false">
+          <span class="icon" aria-hidden="true">☾</span>
+          <span class="hide-sm">Theme</span>
+        </button>
+        <button id="clearFavsBtn" class="btn btn--ghost" type="button">
+          <span class="icon" aria-hidden="true">✕</span>
+          <span class="hide-sm">Clear Favs</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <header class="section__head">
+      <h1 class="section__title">Gallery</h1>
+      <p class="muted">Search, filter, sort, favorite, and open pieces in the viewer.</p>
+    </header>
+
+    <section class="controls" aria-label="Gallery controls">
+      <div class="controls__grid">
+        <label class="field">
+          <span class="label">Search</span>
+          <input id="searchInput" type="search" placeholder="Try: neon, portrait, surreal…" autocomplete="off" />
+        </label>
+
+        <label class="field">
+          <span class="label">Sort</span>
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="newest">Newest</option>
+            <option value="title">Title A→Z</option>
+          </select>
+        </label>
+
+        <label class="field">
+          <span class="label">Max Year</span>
+          <input id="yearRange" type="range" min="2018" max="2026" value="2026" />
+          <span class="chip chip--soft" id="yearValue" aria-live="polite">≤ 2026</span>
+        </label>
+
+        <label class="field">
+          <span class="label">View</span>
+          <select id="viewSelect">
+            <option value="masonry">Masonry</option>
+            <option value="grid">Grid</option>
+            <option value="focus">Focus (large)</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="tagbar" aria-label="Tag filters">
+        <button class="chip tag is-active" data-tag="all" type="button">All</button>
+        <button class="chip tag" data-tag="abstract" type="button">Abstract</button>
+        <button class="chip tag" data-tag="portrait" type="button">Portrait</button>
+        <button class="chip tag" data-tag="landscape" type="button">Landscape</button>
+        <button class="chip tag" data-tag="neon" type="button">Neon</button>
+        <button class="chip tag" data-tag="surreal" type="button">Surreal</button>
+        <button class="chip tag" data-tag="3d" type="button">3D</button>
+        <button class="chip tag" data-tag="pixel" type="button">Pixel</button>
+      </div>
+
+      <div class="statusline" role="status" aria-live="polite">
+        <span><strong id="resultCount">0</strong> results</span>
+        <span>•</span>
+        <span><strong id="favCount">0</strong> favorites</span>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="muted">Keyboard: ← → (navigate) • Esc (close)</span>
+      </div>
+    </section>
+
+    <section class="gallery-wrap">
+      <div id="gallery" class="gallery gallery--masonry" aria-label="Art gallery grid"></div>
+
+      <div id="emptyState" class="empty hidden" role="status" aria-live="polite">
+        <h2>No results</h2>
+        <p>Try a different search, tag, sort, or year.</p>
+        <button id="resetBtn" class="btn" type="button">Reset Filters</button>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Viewer -->
+  <div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-label="Artwork viewer">
+    <div class="modal__backdrop" data-close="true"></div>
+
+    <div class="modal__card" role="document">
+      <header class="modal__head">
+        <div class="modal__title">
+          <h2 id="modalTitle">Title</h2>
+          <p id="modalMeta" class="muted">Meta</p>
+        </div>
+
+        <div class="modal__actions">
+          <button id="prevBtn" class="btn btn--ghost" type="button" title="Previous (←)">←</button>
+          <button id="nextBtn" class="btn btn--ghost" type="button" title="Next (→)">→</button>
+          <button id="closeBtn" class="btn" type="button" title="Close (Esc)">Close</button>
+        </div>
+      </header>
+
+      <figure class="modal__figure">
+        <img id="modalImg" alt="" />
+      </figure>
+
+      <footer class="modal__foot">
+        <p id="modalDesc" class="muted"></p>
+
+        <div class="modal__footActions">
+          <button id="favBtn" class="btn" type="button">
+            <span class="icon" aria-hidden="true">★</span>
+            <span id="favBtnText">Add to Favorites</span>
+          </button>
+          <a id="downloadLink" class="btn btn--ghost" href="#" download>Download</a>
+        </div>
+      </footer>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Arcadia Gallery</p>
+      <p class="muted">Offline-ready • Accessible • Competition-level</p>
+    </div>
+  </footer>
+
+    <script type="module" src="assets/js/app.js"></script>
+    <script type="module" src="assets/js/gallery.js"></script>
+</body>
+</html>

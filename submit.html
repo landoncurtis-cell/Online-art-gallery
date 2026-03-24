@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arcadia Gallery digital art experience">
+<title>Arcadia Gallery</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0d12">
+
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/layout.css">
+<link rel="stylesheet" href="assets/styles/components.css">
+<link rel="stylesheet" href="assets/styles/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Arcadia Gallery home">
+        <span class="brand__mark" aria-hidden="true">◼︎</span>
+        <span class="brand__text">
+          <span class="brand__title">Arcadia Gallery</span>
+          <span class="brand__sub">Digital Art • Curated Collection</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="submit.html" aria-current="page">Submit</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="accessibility.html">Accessibility</a>
+        <a class="nav__link" href="references.html">References</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button id="themeBtn" class="btn btn--ghost" type="button" aria-pressed="false">
+          <span class="icon" aria-hidden="true">☾</span>
+          <span class="hide-sm">Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <header class="section__head">
+      <h1 class="section__title">Submit Artwork</h1>
+      <p class="muted">This form validates input and saves submissions locally (great for demos).</p>
+    </header>
+
+    <section class="panel panel--flat">
+      <form id="submitForm" class="form" novalidate>
+        <div class="form__grid">
+          <label class="field">
+            <span class="label">Artwork Title *</span>
+            <input name="title" type="text" required minlength="2" maxlength="60" placeholder="Ex: Prism Persona" />
+            <span class="help">2–60 characters.</span>
+          </label>
+
+          <label class="field">
+            <span class="label">Artist Name *</span>
+            <input name="artist" type="text" required minlength="2" maxlength="40" placeholder="Ex: Landon Curtis" />
+            <span class="help">2–40 characters.</span>
+          </label>
+
+          <label class="field">
+            <span class="label">Year *</span>
+            <input name="year" type="number" required min="2010" max="2035" value="2026" />
+            <span class="help">2010–2035.</span>
+          </label>
+
+          <label class="field">
+            <span class="label">Image URL *</span>
+            <input name="img" type="url" required placeholder="https://example.com/art.jpg" />
+            <span class="help">Use a direct image link (jpg/png/webp).</span>
+          </label>
+
+          <label class="field field--full">
+            <span class="label">Description *</span>
+            <textarea name="desc" required minlength="15" maxlength="220" rows="4"
+              placeholder="Tell us what makes your artwork special…"></textarea>
+            <span class="help">15–220 characters.</span>
+          </label>
+
+          <label class="field field--full">
+            <span class="label">Tags (comma-separated) *</span>
+            <input name="tags" type="text" required placeholder="abstract, neon, portrait" />
+            <span class="help">Example: surreal, landscape, 3d</span>
+          </label>
+        </div>
+
+        <div class="form__actions">
+          <button class="btn" type="submit">
+            <span class="icon" aria-hidden="true">✓</span> Submit
+          </button>
+          <button class="btn btn--ghost" type="reset">Reset</button>
+        </div>
+
+        <div id="formMsg" class="form__msg" role="status" aria-live="polite"></div>
+      </form>
+    </section>
+
+    <section class="section">
+      <h2 class="section__title">Saved Submissions (Local)</h2>
+      <p class="muted">These are stored in your browser for judging demos.</p>
+      <div id="submissionList" class="submissionList"></div>
+      <button id="clearSubsBtn" class="btn btn--ghost" type="button">Clear Submissions</button>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Arcadia Gallery</p>
+      <p class="muted">Submit page with validation + local storage</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+<script type="module" src="assets/js/submit.js"></script>
+</body>
+</html>

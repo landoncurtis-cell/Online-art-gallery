@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Arcadia Gallery digital art experience">
+<title>Arcadia Gallery</title>
+
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0b0d12">
+
+<link rel="stylesheet" href="assets/styles/base.css">
+<link rel="stylesheet" href="assets/styles/layout.css">
+<link rel="stylesheet" href="assets/styles/components.css">
+<link rel="stylesheet" href="assets/styles/theme.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="topbar">
+    <div class="container topbar__inner">
+      <a class="brand" href="index.html" aria-label="Arcadia Gallery home">
+        <span class="brand__mark" aria-hidden="true">◼︎</span>
+        <span class="brand__text">
+          <span class="brand__title">Arcadia Gallery</span>
+          <span class="brand__sub">Digital Art • Curated Collection</span>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Primary navigation">
+        <a class="nav__link" href="index.html">Home</a>
+        <a class="nav__link" href="gallery.html">Gallery</a>
+        <a class="nav__link" href="submit.html">Submit</a>
+        <a class="nav__link" href="about.html">About</a>
+        <a class="nav__link" href="accessibility.html" aria-current="page">Accessibility</a>
+        <a class="nav__link" href="references.html">References</a>
+      </nav>
+
+      <div class="topbar__actions">
+        <button id="themeBtn" class="btn btn--ghost" type="button" aria-pressed="false">
+          <span class="icon" aria-hidden="true">☾</span>
+          <span class="hide-sm">Theme</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main" class="container section">
+    <header class="section__head">
+      <h1 class="section__title">Accessibility</h1>
+      <p class="muted">Designing so more people can use the site comfortably.</p>
+    </header>
+
+    <section class="panel panel--flat prose">
+      <h2>What We Support</h2>
+      <ul>
+        <li><strong>Keyboard navigation:</strong> Tab through controls, open artwork, use ←/→, press Esc to close viewer.</li>
+        <li><strong>Focus visibility:</strong> Clear focus outline for interactive elements.</li>
+        <li><strong>Reduced motion:</strong> Animations reduce/disable when your system preference is set to “reduce motion.”</li>
+        <li><strong>Screen reader hints:</strong> ARIA labels, live regions for result counts, and descriptive alt text.</li>
+        <li><strong>Color & contrast:</strong> High-contrast UI, plus theme toggle.</li>
+      </ul>
+
+      <h2>Contact</h2>
+      <p>
+        If something is hard to use, that’s a problem we want to fix. For a competition project, you can add a teacher contact here.
+      </p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <p>© <span id="year"></span> Arcadia Gallery</p>
+      <p class="muted">Accessibility statement</p>
+    </div>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
